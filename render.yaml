@@ -1,7 +1,7 @@
 
 services:
   - type: pserv
-    region: singapole
+    region: singapore
     name: redis
     env: docker
     autoDeploy: false
@@ -12,7 +12,7 @@ services:
       sizeGB: 10
 
   - type: pserv
-    region: singapole
+    region: singapore
     name: elasticsearch
     dockerfilePath: ./elasticsearch/Dockerfile
     dockerContext: ./elasticsearch
@@ -40,7 +40,7 @@ services:
       value: true
 
   - type: worker
-    region: singapole
+    region: singapore
     name: sidekiq
     env: docker
     dockerfilePath: ./forem/Dockerfile
@@ -75,7 +75,7 @@ services:
           property: connectionString
 
   - type: web
-    region: singapole
+    region: singapore
     name: forem
     env: docker
     dockerfilePath: ./forem/Dockerfile
@@ -115,7 +115,7 @@ services:
 
 databases:
   - name: forem
-    region: singapole
+    region: singapore
     plan: starter
 
 envVarGroups:
