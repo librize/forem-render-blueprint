@@ -1,5 +1,9 @@
+default: &default
+  region: singapole
+
 services:
-  - type: pserv
+  - <<: *default
+    type: pserv
     name: redis
     env: docker
     autoDeploy: false
@@ -9,7 +13,8 @@ services:
       mountPath: /var/lib/redis
       sizeGB: 10
 
-  - type: pserv
+  - <<: *default
+    type: pserv
     name: elasticsearch
     dockerfilePath: ./elasticsearch/Dockerfile
     dockerContext: ./elasticsearch
@@ -36,7 +41,8 @@ services:
     - key: bootstrap.memory_lock
       value: true
 
-  - type: worker
+  - <<: *default
+    type: worker
     name: sidekiq
     env: docker
     dockerfilePath: ./forem/Dockerfile
@@ -70,7 +76,8 @@ services:
           name: forem
           property: connectionString
 
-  - type: web
+  - <<: *default
+    type: web
     name: forem
     env: docker
     dockerfilePath: ./forem/Dockerfile
@@ -109,7 +116,8 @@ services:
           property: connectionString
 
 databases:
-  - name: forem
+  - <<: *default
+    name: forem
     plan: starter
 
 envVarGroups:
